@@ -6,13 +6,10 @@ print "Collatz Conjecture"
 print "This program determines how many steps are required to complete the\n\
 Collatz sequence for any given N."
 
-run = True
-
-while run:
-	print "Enter N (-1 to quit): ",
+while True:
+	print "Enter N (Negative to quit): ",
 	orig = int(raw_input())
-	if(orig == -1):
-		run = False
+	if(orig < 0):
 		sys.exit()
 	n = orig
 
