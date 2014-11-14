@@ -19,28 +19,32 @@ def quit():
 	print "Another clean finish!"
 	sys.exit()
 
-print "Collatz Conjecture"
-print "This program computes how many steps are required to complete the Collatz sequence for any given N."
+def main(argv):
+	print "Collatz Conjecture"
+	print "This program computes how many steps are required to complete the Collatz sequence for any given N."
 
-while True:
+	while True:
 
-	print "Compute sequence for a (s)eries or (i)ndividual number? "
-	choice = raw_input().lower()
-	while((choice != 's') and (choice != 'i')):
-		print "Invalid input. Enter \'s\' for series computation or \'i\' for individual computation: "
+		print "Compute sequence for a (s)eries or (i)ndividual number? "
 		choice = raw_input().lower()
+		while((choice != 's') and (choice != 'i')):
+			print "Invalid input. Enter \'s\' for series computation or \'i\' for individual computation: "
+			choice = raw_input().lower()
 
-	if(choice == 's'):
-		print "Enter positive lower bound (Negative to quit): ",
-		lower = int(raw_input())
-		print "Enter positive upper bound (Negative to quit): ",
-		upper = int(raw_input())
-		if((lower <= 0) or (upper < 0)): #Crash protection
-			quit()
-		Series(lower, upper)
-	else:
-		print "Enter N (Negative to quit): ",
-		n = int(raw_input())
-		if(n <= 0): #Crash protection
-			quit()
-		print "It took %s steps for %s to reach 1." % (Stepper(n), n)
+		if(choice == 's'):
+			print "Enter positive lower bound (Negative to quit): ",
+			lower = int(raw_input())
+			print "Enter positive upper bound (Negative to quit): ",
+			upper = int(raw_input())
+			if((lower <= 0) or (upper < 0)): #Crash protection
+				quit()
+			Series(lower, upper)
+		else:
+			print "Enter N (Negative to quit): ",
+			n = int(raw_input())
+			if(n <= 0): #Crash protection
+				quit()
+			print "It took %s steps for %s to reach 1." % (Stepper(n), n)
+
+if(__name__ == "__main__"):
+	main(sys.argv)
